@@ -1,124 +1,122 @@
-from flask import Flask
-from matplotlib import pyplot as plt
-import pendulum
-import numpy as np
-import pandas as pd
+from flask import Flask, session, redirect
+import pymongo
 
 # Create a flask app
-app = Flask(
-  __name__,
-  template_folder='templates',
-  static_folder='static'
-)
+app = Flask(__name__)
+app.secret_key = "supersecretekey"
 
-# Index page
+# # setting up a local db
+client = pymongo.MongoClient("localhost", 27017)
+# set the db to the connectrus database. creates one if there isn't one
+db = client.connectrus
+
+# # the db connected to the cloud
+# client = pymongo.MongoClient("mongodb+srv://Amanda:<HEi5PECVhPbG6ZOk>@connectrus.ydbwi.mongodb.net/connectrus?retryWrites=true&w=majority")
+# db = client.test
+
+# set variable to collection called users. creates one if there isn't one
+users = db.users
+
+
+# Sessions is used to keep the user logged in until they logged out
+# it also stores the username so we can easily grab info for that user from the db
+
+# Home page
 @app.route('/')
 def hello():
-  return "Hello World!"
+    if 'username' in session:
+        userData = users.find_one({'username': session['username']})
+        return "Hello " + userData['name'] + "!"
+    return "Hello World!"
 
-#Amanda's HTTP Request
-@app.route("/number/<input>")
-def number(input):
-  input = int(input)
-  if (input%2==0):
-    return "even!"
-  else:
-    return "odd!"
 
-#Sandra's HTTP Request
-def ftoc(ftemp):
-   return (ftemp-32.0)*(5.0/9.0)
-
-@app.route('/ftoc/<ftempString>')
-def convertFtoC(ftempString):
-    ftemp = 0.0
-    try:
-        ftemp = float(ftempString)
-        ctemp = ftoc(ftemp)
-        return ftempString + "° degree Farenheit is " + str(ctemp) +" in Celsius "
-    except ValueError:
-        return "Sorry.  Could not convert " + ftempString + " to a number"
-
-#Jonathan's HTTP Request
-def ktomi(kilo):
-  return (kilo*.621371)
-
-@app.route('/ktomi/<kilometers>')
-def convertKtoMi(kilometers):
-  try:
-    kilo=float(kilometers)
-    mi=ktomi(kilo)
-    return kilometers + " kilometers is " + str(mi) + " miles."
-  except ValueError:
-      return "Sorry. Could not convert " + kilometers + " to miles."
-
-#Julia's HTTP Request
-@app.route("/factorial/<n>")
-def factorial(n):
-    if n == 0:
-        return 1
+# signup
+# TODO: make sure no inputs are null, and no illegal characters
+@app.route('/signup/<username>/<password>/<name>')
+def signup(username, password, name):
+    # if the count matches the limit it returns true, else false
+    if users.count_documents({'username': username}, limit=1):
+        return "username already exists!"
     else:
-        return n * factorial(n-1)
-n=int(input("Input a number to compute the factiorial : "))
-print(factorial(n))
-
-#Chelsea's HTTP Request
-@app.route("/square/<n>")
-def square(n):
-    n = int(n)
-    n_sq = n ** 2
-    return "The square of " + str(n) + " is " + str(n_sq)
-
-# Amanda's A4 code
-@app.route("/timezone")
-def timezone():
-    local = pendulum.now()
-    paris_time = pendulum.timezone('Europe/Paris').convert(pendulum.now('UTC'))
-    start = pendulum.today()
-    end = pendulum.datetime(2021, 12, 18)
-    period = pendulum.period(start, end)
-    return "Your time is " + local.to_day_datetime_string() + "</br> In Paris it is " + paris_time.to_day_datetime_string() + "</br>" + str(period.days) + " day until end of semester"
-
-#Sandra's A4 code
-@app.route('/arrays/<row>/<col>')
-def arrays(row, col):
-    r = int(row)
-    c = int(col)
-    z = np.zeros((r, c))
-    return "An array initialized with all zeros:</br>" + str(z)
-
-#Julia's A4 code
-@app.route("/table")
-def table():
-    data = np.array([['', 'Col1', 'Col2'],
-                     ['Row1', 1, 2],
-                     ['Row2', 3, 4]])
-
-    df = (pd.DataFrame(data=data[1:, 1:],
-                       index=data[1:, 0],
-                       columns=data[0, 1:]))
-
-    return str(df)
-
-# Chelsea's A4 code
-@app.route("/plot")
-def plot():
-    x_values = [1, 2, 3, 4]
-    y_values = [4, 3, 2, 1]
-
-    plt.plot(x_values, y_values, color="navy")
-    plt.title("Chelsea's energy level of the day")
-    plt.xlabel("time")
-    plt.ylabel("energy level")
-    return str(plt.show())
-
-#Jonathan's A4 code
-@app.route('/parse')
-def parse():
-    url = "https://www.tutorialspoint.com/index.htm"
-    req = requests.get(url)
-    soup = BeautifulSoup(req.text, "html.parser")
-    return "Website titles is " + str(soup.title.text)
+        # username is unique so we add the user to the db
+        data = {'username': username, 'password': password, 'name': name, 'groups': []}
+        users.insert_one(data)
+        session.permanent = True
+        session['username'] = username
+        return redirect('/')
 
 
-app.run(host = "0.0.0.0")
+# TODO: if a user is already logged in the page should block them from inputting login info
+@app.route('/login/<username>/<password>')
+def login(username, password):
+    # if the username exists in the db
+    if users.count_documents({'username': username}, limit=1):
+        # check that the password is correct
+        userData = users.find_one({'username': username})
+        if userData['password'] == password:
+            session.permanent = True
+            # set the session's username to the username that just logged in
+            session['username'] = username
+            return redirect('/')
+        else:
+            return "Wrong Password!"
+    else:
+        # TODO: this should be a pop up or something, so user can still attempt to login
+        return "That username already exists! Or someone is logged in already"
+
+
+# logout
+@app.route('/logout')
+def logout():
+    # remove the username from the session, now there are no users logged into the session
+    session.pop('username', None)
+    return redirect('/')
+
+# shows groups that the user is part of
+@app.route('/groups')
+def groups():
+    # check if there is a user logged in
+    if 'username' in session:
+        # pull up the data for the logged in user
+        userData = users.find_one({'username': session['username']})
+        output = userData['name'] + "'s Groups: "
+        # if the user is not in any groups
+        if len(userData['groups']) == 0:
+            return output + "You aren't in any groups!"
+        return output + str(userData['groups'])
+    return "Please login to view groups"
+
+# create a group
+@app.route('/createGroup/<groupid>')
+def createGroup(groupid):
+    # check that there is a user logged in
+    if 'username' in session:
+        if db.groups.count_documents({'groupid': groupid}, limit=1):
+            return "This group ID already exists! Please make a different one."
+        else:
+            data = {'groupid': groupid, 'members': session['username']}
+            db.groups.insert_one(data)
+            # add the groupid to the user's data
+            users.update_one({'username': session['username']}, {'$push': {'groups': groupid}})
+            return redirect('/groups')
+    return "Please login to create groups"
+
+
+# delete a group
+#TODO: doesn't delete from user's 'group' list but it does delete from the group db
+@app.route('/deleteGroup/<groupid>')
+def deleteGroup(groupid):
+    # check that there is a user logged in
+    if 'username' in session:
+        if db.groups.count_documents({'groupid': groupid}, limit=1):
+            db.groups.delete_one({'groupid': groupid})
+            # also need to delete the group from any user's data
+            for user in users.find({"group": groupid}):
+                db.user.update({'_id': user['_id']}, {'$pull': {"group": groupid}})
+            return redirect('/groups')
+        else:
+            return "this group ID doesn't exist!"
+    return "Please login to create groups"
+
+
+app.run(host="0.0.0.0")
