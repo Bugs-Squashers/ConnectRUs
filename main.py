@@ -62,6 +62,7 @@ def login(username, password):
             return "Wrong Password!"
     else:
         # TODO: this should be a pop up or something, so user can still attempt to login
+        # ERROR noted: this was return even when no one was logged in and the username didn't exists yet
         return "That username already exists! Or someone is logged in already"
 
 
