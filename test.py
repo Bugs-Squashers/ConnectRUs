@@ -42,5 +42,13 @@ class TestMain(unittest.TestCase):
         self.assertEquals(r.status_code, 200)
         # if user isn't in any group, return "You aren't in any groups!"
         self.assertEquals(r.text, "You aren't in any groups!")
-
-
+        
+    # Chelsea's Test
+    def test_signup(self, mocked_input):
+        # checks if user is already existed
+        r = requests.get(self.URL)
+        mocked_input.side_effect = ['ChelseaUsername', 'password123', 'Chelsea L', 'ChelseaGroup']
+        result = login(1)
+        self.assertEqual(result, {'ChelseaUsername', 'password123', 'Chelsea L', 'ChelseaGroup'})
+        # once user signs up, goes back to home page and display hello world
+        self.assertEquals(r.text, "Hello Chelsea!")
