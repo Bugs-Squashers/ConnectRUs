@@ -34,5 +34,13 @@ class TestMain(unittest.TestCase):
         self.assertEqual(result, {'Jonathan H', 'password123'})
         # once user logins, goes back to home page and display hello world
         self.assertEquals(r.text, "Hello Jonathan H!")
+       
+    # Julia's Test
+    def test_home(self):
+        r = requests.get(self.URL'/groups')
+        # status code 200 means we got a response back, user entered group
+        self.assertEquals(r.status_code, 200)
+        # if user isn't in any group, return "You aren't in any groups!"
+        self.assertEquals(r.text, "You aren't in any groups!")
 
 
