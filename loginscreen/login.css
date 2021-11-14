@@ -6,7 +6,7 @@
 }
 
 body {
-	background: #f6f5f7;
+	background: #E3B5A4;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -212,7 +212,7 @@ input {
 }
 
 .social-container {
-	margin: 20px 0;
+	margin: 15px 0;
 }
 
 .social-container a {
@@ -225,6 +225,7 @@ input {
 	height: 40px;
 	width: 40px;
 }
+
 
 footer {
     background-color: #222;
