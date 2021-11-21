@@ -9,15 +9,34 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="calendar.css">
 
 	</head>
-	<body>
+	
+	<body style="background-color:#A99F96;">
+	<img src="../crulogo.png" alt="Connect-R-Us Logo" class="logo" height="125px">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="../homescreen/home.html">Home </a>
+      <a class="nav-item nav-link active" href="../loginscreen/login.html">Sign In/Sign Up<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="../create/create.html">Create</a>
+	  <a class="nav-item nav-link" href="calendar.html">Timeline<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="../availability/availability.html">Group's Availability</a>
+	  <a class="nav-item nav-link" href="../task/task.html">Task</a>
+	  <a class="nav-item nav-link" href="../team/team.html">Team</a>
+
+    </div>
+  </div>
+</nav>
+<br>
+
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">"Group Name"'s #Calender</h2>
+					<h2 class="heading-section">Group's Calender</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -75,9 +94,9 @@
 				          <div class="form-container" align="center">
 				            <label class="form-label" id="valueFromMyButton" for="name">Task name</label>
 				            <input class="input" type="text" id="name" maxlength="36">
-				            <label class="form-label" id="valueFromMyButton">Task Description</label>
+				            <label class="form-label" id="valueFromMyButton">Task Description</label><br>
 							<textarea class="textarea resize-ta" placeholder="Input the task description here">
-							</textarea>
+							</textarea><br><br>
 							<!--
 							<input class="input" type="number" id="count" min="0" max="1000000" maxlength="7">
 							-->
