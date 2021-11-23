@@ -1,8 +1,51 @@
-{% extends "base.html" %}
-{% block title %}Login Page{% endblock %}
+<!-- A template for us to copy and paste into other html pages-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
 
-{% block content %}
-<H1>Signup</H1>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="/static/css/base.css">
+
+    <!-- change title to whatever the page is for-->
+    <title>Title</title>
+  </head>
+  <body>
+   <img src="/static/images/crulogo.png" alt="Connect-R-Us Logo" class="logo" height="150px">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <div class="navbar-nav">
+   <a class="nav-item nav-link" href="/">Home </a>
+      <a class="nav-item nav-link active" href="/login">Sign In/Sign Up<span class="sr-only">(current)</span></a>
+      <!--no working link for create yet, ignore for now-->
+      <a class="nav-item nav-link" href="../create/create.html">Create</a>
+      <!--no working link for calendar yet, ignore for now-->
+	   <a class="nav-item nav-link" href="../calendar/calendar.html">Timeline</a>
+
+      <!-- added these 3 to what Sandra had-->
+      <a class="nav-item nav-link" href="/event">Create Event</a>
+      <a class="nav-item nav-link" href="/available">Enter Availability</a>
+      <a class="nav-item nav-link" href="/lookup">Group's Availability</a>
+
+      <!--no working link for task yet, ignore for now-->
+	   <a class="nav-item nav-link" href="../task/task.html">Task</a>
+      <!--no working link for team yet, ignore for now-->
+	   <a class="nav-item nav-link" href="../team/team.html">Team</a>
+
+      <!--added this too-->
+      <a class="nav-item nav-link" href="/logout">Signout</a>
+    </div>
+  </div>
+</nav>
+
+  <div class="content">
+    <H1>Signup</H1>
 <form action="#" method="post">
 	<p>username:</p>
 	<p><input type="text" name="username" /></p>
@@ -12,4 +55,14 @@
 	<p><input type="text" name="name" /></p>
 	<p><input type="submit" value="submit"/></p>
 </form>
-{% endblock %}
+
+  </div>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.validate.min.js"></script>
+    <script src="/static/js/main.js"></script>
+
+  </body>
+</html>

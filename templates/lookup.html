@@ -45,19 +45,13 @@
 </nav>
 
   <div class="content">
-    <p>Showing Availabilities for: {{eventname}}</p>
-      </br>
-    <p>Taking place on: {{date}}</p>
+    <form action="#" method="post">
 
-<table>
-    {% for row in data %}
-    <tr>
-        {% for cell in row %}
-        <td>{{ cell }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    <p>Input event id to see people's availability:</p>
+    <input type="text" placeholder="event id" name="eventid" />
+    <input type="submit">
+
+   </form>
 
   </div>
 

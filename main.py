@@ -1,3 +1,4 @@
+from bson import ObjectId
 from flask import Flask, session, redirect, request, render_template
 import pymongo
 import datetime
@@ -105,41 +106,64 @@ def logout():
 @app.route('/event', methods=['GET', 'POST'])
 def event():
     if request.method == "POST":
-        # start = request.form.get('start')
-        # # end = request.form.get['end']
-        # string = start.strftime('%A')
-        ##########################################################
+        #####################################################
+        # unique event stuff
+        eventname = request.form.get('eventname')
+        #####################################################
         date = request.form.get('date')
-        ##########################################################
         start = request.form.get('start')
         end = request.form.get('end')
-        print(start)
+        # print(start)
         start_datetime = datetime.datetime.strptime(date + " " + start, "%Y-%m-%d %H:%M")
         end_datetime = datetime.datetime.strptime(date + " " + end, "%Y-%m-%d %H:%M")
 
         # TODO: make sure no duplicates for same event (aka event name should be unique)
         # TODO: in html (?) plz let user only choose 30 min interval times
         delta = datetime.timedelta(minutes=30)
-        data = {'eventname': 'test', 'date': date, start_datetime.strftime('%H:%M'): []}
-        trial.insert_one(data)
+        data = {'eventname': eventname, 'date': date, 'start': start_datetime.strftime('%I:%M %p'), 'end': end_datetime.strftime('%I:%M %p'), start_datetime.strftime('%H:%M'): []}
+        #####################################################
+        event_id = trial.insert_one(data)
+        #####################################################
         while start_datetime < end_datetime:
             start_datetime = start_datetime + delta
-            trial.update_one({'eventname': 'test'}, {'$set': {start_datetime.strftime('%H:%M'): []}})
-
-        result = start_datetime.strftime('%c') + ' ' + end_datetime.strftime('%c')
-        return render_template("testing.html", value=result)
-    return render_template("scheduling.html")
+            # trial.update_one({'eventname': 'test'}, {'$set': {start_datetime.strftime('%H:%M'): []}})
+            #####################################################
+            trial.update_one({'_id': event_id.inserted_id}, {'$set': {start_datetime.strftime('%H:%M'): []}})
+            #####################################################
+        message = "The id for your event is: " + str(event_id.inserted_id) + " Copy it and keep it somewhere safe!"
+        # result = start_datetime.strftime('%c') + ' ' + end_datetime.strftime('%c')
+        # return render_template("testing.html", value=result)
+        return render_template("message.html", value=message)
+    return render_template("event.html")
 
 
 # TODO: can only add times that are within the event time
-# TODO: search for correct event to add to
-# TODO: don't allow repeats
 @app.route('/available', methods=['GET', 'POST'])
 def available():
-    # if 'username' in session:
+    # if user is logged in
     if 'username' in session:
-        userData = users.find_one({'username': session['username']})
         if request.method == "POST":
+            #####################################################
+            session['availableid'] = request.form.get('eventid')
+            #####################################################
+            return redirect('/available2')
+        else:
+            return render_template("available.html")
+    return render_template("message.html", value="Please Login")
+
+
+@app.route('/available2', methods=['GET', 'POST'])
+def available2():
+    if 'username' in session:
+        print("hello")
+        # display the event date and time
+        eventData = trial.find_one({'_id': ObjectId(session['availableid'])})
+
+
+        if request.method == "POST":
+            userData = users.find_one({'username': session['username']})
+            eventid = session['availableid']
+
             # take the string of time from html
             from_string = request.form.get('available_from')
             to_string = request.form.get('available_to')
@@ -149,18 +173,35 @@ def available():
 
             delta = datetime.timedelta(minutes=30)
 
+            print(available_from)
+            print(available_to)
+
             while available_from <= available_to:
-                trial.update_one({'eventname': 'test'}, {'$push': {available_from.strftime('%H:%M'): userData['name']}})
+                #####################################################
+                trial.update_one({'_id': ObjectId(eventid)}, {'$push': {available_from.strftime('%H:%M'): userData['name']}})
+                #####################################################
+                # trial.update_one({'eventname': 'test'}, {'$push': {available_from.strftime('%H:%M'): userData['name']}})
                 available_from = available_from + delta
-            return "Added Availability"
-        else:
-            return render_template("available.html")
-    return "please login"
+            return render_template("message.html", value="Added Availability")
+        else: #not a post request
+            return render_template("available2.html", date=eventData['date'], start=eventData['start'], end=eventData['end'])
+    return render_template("message.html", value="Please Login")
+
+
+@app.route('/lookup', methods=['GET', 'POST'])
+def lookup():
+    if request.method == "POST":
+        session['eventid'] = request.form.get('eventid')
+        return redirect('/time')
+    return render_template("lookup.html")
 
 
 @app.route('/time', methods=['GET'])
 def time():
-    eventData = trial.find_one({'eventname': 'test'}, {"_id": 0, "eventname": 0, "date": 0})
+    eventid = session['eventid']
+    eventDate = trial.find_one({'_id': ObjectId(eventid)})
+    eventData = trial.find_one({'_id': ObjectId(eventid)}, {"_id": 0, "eventname": 0, "date": 0, "start": 0, "end": 0})
+    print(eventData)
     data = []
     for key in eventData:
         temp = []
@@ -168,7 +209,8 @@ def time():
         for x in eventData.get(key):
             temp.append(x)
         data.append(temp)
-    return render_template("time.html", data=data)
+    eventname = trial.find_one({'_id': ObjectId(eventid)})['eventname']
+    return render_template("time.html", date=str(eventDate['date']), eventname=eventname, data=data)
 
 
 # commented these out because they need to be fixed/don't have a html yet

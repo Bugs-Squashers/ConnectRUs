@@ -45,19 +45,23 @@
 </nav>
 
   <div class="content">
-    <p>Showing Availabilities for: {{eventname}}</p>
-      </br>
-    <p>Taking place on: {{date}}</p>
 
-<table>
-    {% for row in data %}
-    <tr>
-        {% for cell in row %}
-        <td>{{ cell }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    <p>Taking place on: {{date}}</p>
+    <br>
+    <p>From {{start}} to {{end}}</p>
+
+    <form action="#" method="post">
+    <label for="time">Available From</label>
+    <input type="time" name="available_from">
+    <br>
+
+    <label for="time">Available To</label>
+    <input type="time" name="available_to">
+    <br>
+
+    <input type="submit">
+
+</form>
 
   </div>
 
