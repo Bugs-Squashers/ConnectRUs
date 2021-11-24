@@ -13,9 +13,6 @@
     <!-- Style -->
     <link rel="stylesheet" href="/static/css/base.css">
 
-    <link rel="stylesheet" href="/static/css/event.css">
-
-
     <!-- change title to whatever the page is for-->
     <title>Title</title>
   </head>
@@ -50,21 +47,16 @@
   <div class="content">
     <form action="#" method="post">
 
-    <!--header-->
-    <h1>Create an Event.</h1>
+    <input type="text" placeholder="event name" name="eventname" />
     <br>
 
-    <label for="text">enter a name</label>
-    <input type="text" placeholder="event name" name="eventname" />
-    <br><br>
-
-    <label for="date">select a date</label>
+    <label for="date">Pick a date</label>
     <input type="date" name="date">
-    <br><br>
+    <br>
 
-    <label for="time">start time</label>
+    <label for="time">Start</label>
     <input type="time" name="start">
-    <br><br>
+    <br>
 
 
 
@@ -119,14 +111,14 @@
 <!--        <option value="23:30">11:30pm</option>-->
 <!--    </select>-->
 
-    <label for="time">end time</label>
+    <label for="time">End</label>
     <input type="time" name="end">
-    <br><br>
+    <br>
 
-    <button type="submit" value="Submit">Submit</button>
-  </form>
+  <input type="submit">
+</form>
 
-</div>
+  </div>
 
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <script src="/static/js/popper.min.js"></script>
