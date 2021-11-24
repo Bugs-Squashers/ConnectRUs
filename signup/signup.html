@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="signup.css">
+</head>
+<img src="../crulogo.png" alt="Connect-R-Us Logo" class="logo" height="125px">
+
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="../homescreen/home.html">Home </a>
+      <a class="nav-item nav-link active" href="login.html">Sign In/Sign Up<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="../create/create.html">Create</a>
+	  <a class="nav-item nav-link" href="../calendar/calendar.html">Timeline</a>
+      <a class="nav-item nav-link" href="../availability/availability.html">Group's Availability</a>
+	  <a class="nav-item nav-link" href="../task/task.html">Task</a>
+	  <a class="nav-item nav-link" href="../team/team.html">Team</a>
+
+    </div>
+  </div>
+</nav>
+<br>
+    <div class="main">
+
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Create account</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Password"/>
+                        <!--    <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        -->
+						</div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password2" placeholder="Repeat your password"/>
+                        </div>
+						
+						<div class="form-group">
+						<input type="checkbox" id="showPassword" />
+						<label for="showPassword">Show password</label>
+						</div>
+						
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" onclick="checkSimilarity()" class="form-submit" value="Sign up"/>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Already have an account ? <a href="../loginscreen/login.html" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="jquery.min.js"></script>
+    <script src="signup.js"></script>
+</body>
+</html>
