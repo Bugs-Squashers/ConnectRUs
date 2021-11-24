@@ -44,19 +44,44 @@
   </div>
 </nav>
 
-  <div class="content">
-    <form action="#" method="post">
+<div class="main">
 
-    <input type="text" placeholder="event name" name="eventname" />
-    <br>
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Create event</h2>
+                    <br>
+                    <div class="form-group">
+                        <label for="date">enter a name</label>
+                        <input type="text" class="form-input" name="name" id="name" placeholder="event name"/>
+                    </div>
 
-    <label for="date">Pick a date</label>
-    <input type="date" name="date">
-    <br>
+                    <div class="form-group">
+                        <label for="date">pick a date</label>
+                        <input type="date" class="form-input" name="date" id="date"/>
+                    </div>
 
-    <label for="time">Start</label>
-    <input type="time" name="start">
-    <br>
+                    <div class="form-group">
+                      <label for="time">start time</label>
+                      <input type="time" class="form-input" name="start" id="start"/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="time">end time</label>
+                      <input type="time" class="form-input" name="end" id="end"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit"  class="form-submit" value="Submit"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
+
 
 
 
@@ -111,14 +136,6 @@
 <!--        <option value="23:30">11:30pm</option>-->
 <!--    </select>-->
 
-    <label for="time">End</label>
-    <input type="time" name="end">
-    <br>
-
-  <input type="submit">
-</form>
-
-  </div>
 
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <script src="/static/js/popper.min.js"></script>
