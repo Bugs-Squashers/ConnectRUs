@@ -145,6 +145,7 @@ def available():
         if request.method == "POST":
             #####################################################
             session['availableid'] = request.form.get('eventid')
+            print(session['availableid'])
             #####################################################
             return redirect('/available2')
         else:
@@ -262,4 +263,4 @@ def time():
 #     return "Please login to create groups"
 
 
-app.run(host="0.0.0.0")
+app.run(host="0.0.0.0", port=8080)
