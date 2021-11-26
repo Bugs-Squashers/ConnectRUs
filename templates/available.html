@@ -1,65 +1,102 @@
 <!-- A template for us to copy and paste into other html pages-->
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
 
-    <!-- Style -->
-    <link rel="stylesheet" href="/static/css/base.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 
-    <!-- change title to whatever the page is for-->
-    <title>Title</title>
-  </head>
-  <body>
-   <img src="../static/images/crulogo.png" alt="Connect-R-Us Logo" class="logo" height="150px">
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-   <div class="navbar-nav">
-   <a class="nav-item nav-link" href="/">Home </a>
-      <a class="nav-item nav-link" href="/login">Sign In/Sign Up</a>
-      <!--no working link for create yet, ignore for now-->
-      <a class="nav-item nav-link" href="../create/create.html">Create</a>
-      <!--no working link for calendar yet, ignore for now-->
-	   <a class="nav-item nav-link" href="../calendar/calendar.html">Timeline</a>
+  <!-- Style -->
+  <link rel="stylesheet" href="/static/css/base.css">
 
-      <!-- added these 3 to what Sandra had-->
-      <a class="nav-item nav-link" href="/event">Create Event</a>
-      <a class="nav-item nav-link active" href="/available">Enter Availability<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="/lookup">Group's Availability</a>
+  <link rel="stylesheet" href="/static/css/available.css">
 
-      <!--no working link for task yet, ignore for now-->
-	   <a class="nav-item nav-link" href="../task/task.html">Task</a>
-      <!--no working link for team yet, ignore for now-->
-	   <a class="nav-item nav-link" href="../team/team.html">Team</a>
+  <!-- change title to whatever the page is for-->
+  <title>Enter Availablity | Connect-R-Us</title>
+  <!--Logo to tab-->
+    <link href="../static/images/crulogo.png" rel="icon">
+	<link href="../static/images/crulogo.png" rel="apple-touch-icon">
+</head>
 
-      <!--added this too-->
-      <a class="nav-item nav-link" href="/logout">Signout</a>
+<body>
+  <img src="/static/images/crulogo.png" alt="Connect-R-Us Logo" class="logo" height="150px">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/">Home </a>
+        <a class="nav-item nav-link active" href="/login">Sign In/Sign Up<span class="sr-only">(current)</span></a>
+        <!--no working link for create yet, ignore for now-->
+        <a class="nav-item nav-link" href="../create/create.html">Create</a>
+        <!--no working link for calendar yet, ignore for now-->
+        <a class="nav-item nav-link" href="../calendar/calendar.html">Timeline</a>
+
+        <!-- added these 3 to what Sandra had-->
+        <a class="nav-item nav-link" href="/event">Create Event</a>
+        <a class="nav-item nav-link" href="/available">Enter Availability</a>
+        <a class="nav-item nav-link" href="/lookup">Group's Availability</a>
+
+        <!--no working link for task yet, ignore for now-->
+        <a class="nav-item nav-link" href="../task/task.html">Task</a>
+        <!--no working link for team yet, ignore for now-->
+        <a class="nav-item nav-link" href="../team/team.html">Team</a>
+
+        <!--added this too-->
+        <a class="nav-item nav-link" href="/logout">Signout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- <div class="nav-container">
+    <div class="wrapper">
+      <nav>
+        <div>
+          <a class="nav-btn-container" href="#">
+            <img class="logo" src="/static/images/crulogo.png" alt="Connect-R-Us Logo"/>
+          </a>
+        </div>
+        <ul class="nav-items">
+          <li>
+            <a href="#">blog</a>
+          </li>
+          <li>
+            <a href="#">blog</a>
+          </li>
+          <li>
+            <a href="#">blog</a>
+          </li>
+          <li>
+            <a href="#">blog</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div> -->
+
+  <div class="container" id="container">
+    <div class="form-container">
+      <form action="#" method="post">
+        <h1>Enter Event ID</h1>
+        <br>
+        <span>to add your availability</span>
+        <input type="text" placeholder="Event ID" name="eventid" />
+        <br>
+        <br>
+        <input type="submit" id="submit" value="submit">
+      </form>
     </div>
   </div>
-</nav>
 
-  <div class="content">
-    <form action="#" method="post">
-    <p>Enter the id of the event you want to add your availability to:</p>
-        </br>
-    <input type="text" placeholder="event id" name="eventid" />
-    <br>
-    <input type="submit">
-</form>
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/popper.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/jquery.validate.min.js"></script>
+  <script src="/static/js/main.js"></script>
 
-  </div>
+</body>
 
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/popper.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/jquery.validate.min.js"></script>
-    <script src="/static/js/main.js"></script>
-
-  </body>
 </html>

@@ -5,34 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae8ecb1c-33ba-48ed-a5f4-de086b9ae834" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/calendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create/create.css" beforeDir="false" afterPath="$PROJECT_DIR$/create/create.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/create/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/assets/img/portfolio/cabin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/assets/img/portfolio/cake.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/assets/img/portfolio/circus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/assets/img/portfolio/game.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/assets/img/portfolio/safe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/assets/img/portfolio/submarine.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/body.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/heading.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/homescreen/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loginscreen/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/loginscreen/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/signup/signup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/signup/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/available.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/available.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/available2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/available.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/available.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/available.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/available2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/available2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/event.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lookup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lookup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/message.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/message.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/time.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
