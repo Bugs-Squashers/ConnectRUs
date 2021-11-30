@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="create.css">
+
+    <!--Logo to tab-->
+    <link href="../static/images/crulogo.png" rel="icon">
+	<link href="../static/images/crulogo.png" rel="apple-touch-icon">
+
+    <title>Create Group</title>
+  </head>
+  <body>
+  <img src="../crulogo.png" alt="Connect-R-Us Logo" class="logo" height="150px">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+   <a class="nav-item nav-link" href="../homescreen/home.html">Home </a>
+      <a class="nav-item nav-link" href="../loginscreen/login.html">Sign In/Sign Up</a>
+      <a class="nav-item nav-link active" href="create.html">Create<span class="sr-only">(current)</span></a>
+	  <a class="nav-item nav-link" href="../calendar/calendar.html">Timeline</a>
+      <a class="nav-item nav-link" href="../availability/availability.html">Group's Availability</a>
+	  <a class="nav-item nav-link" href="../task/task.html">Task</a>
+	  <a class="nav-item nav-link" href="../team/team.html">Team</a>
+
+    </div>
+  </div>
+</nav>
+
+  <div class="content">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mr-auto">
+          <h3 class="mb-3">Create an Event!</h3>
+          <head>
+		          <p> Already created a team? Create an event here and get to planning!</p>
+        </div>
+
+        <div class="col-md-6">
+          <div class="box">
+            <h3 class="heading">Create Event</h3>
+            <form class="mb-5" method="post" id="contactForm" name="contactForm">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="name" class="col-form-label">Event Name</label>
+                  <input type="text" class="form-control" name="organization" id="organization" placeholder="Your Event Name">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label for="date" class="col-form-label">Date</label>
+                  <input type="date" class="form-control" name="date" id="date"/>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label for="start" class="col-form-label">Start Time:</label>
+                  <select name="start">
+                      <option value="12:00">12:00am</option>
+                      <option value="12:30">12:30am</option>
+                      <option value="1:00">1:00am</option>
+                      <option value="1:30">1:30am</option>
+                      <option value="2:00">2:00am</option>
+                      <option value="2:30">2:30am</option>
+                      <option value="3:00">3:00am</option>
+                      <option value="3:30">3:30am</option>
+                      <option value="4:00">4:00am</option>
+                      <option value="4:30">4:30am</option>
+                      <option value="5:00">5:00am</option>
+                      <option value="5:30">5:30am</option>
+                      <option value="6:00">6:00am</option>
+                      <option value="6:30">6:30am</option>
+                      <option value="7:00">7:00am</option>
+                      <option value="7:30">7:30am</option>
+                      <option value="8:00">8:00am</option>
+                      <option value="8:30">8:30am</option>
+                      <option value="9:00">9:00am</option>
+                      <option value="9:30">9:30am</option>
+                      <option value="10:00">10:00am</option>
+                      <option value="10:30">10:30am</option>
+                      <option value="11:00">11:00am</option>
+                      <option value="11:30">11:30am</option>
+                      <option value="12:00">12:00pm</option>
+                      <option value="12:30">12:30pm</option>
+                      <option value="13:00">1:00pm</option>
+                      <option value="13:30">1:30pm</option>
+                      <option value="14:00">2:00pm</option>
+                      <option value="14:30">2:30pm</option>
+                      <option value="15:00">3:00pm</option>
+                      <option value="15:30">3:30pm</option>
+                      <option value="16:00">4:00pm</option>
+                      <option value="16:30">4:30pm</option>
+                      <option value="17:00">5:00pm</option>
+                      <option value="17:30">5:30pm</option>
+                      <option value="18:00">6:00pm</option>
+                      <option value="18:30">6:30pm</option>
+                      <option value="19:00">7:00pm</option>
+                      <option value="19:30">7:30pm</option>
+                      <option value="20:00">8:00pm</option>
+                      <option value="20:30">8:30pm</option>
+                      <option value="21:00">9:00pm</option>
+                      <option value="21:30">9:30pm</option>
+                      <option value="22:00">10:00pm</option>
+                      <option value="22:30">10:30pm</option>
+                      <option value="23:00">11:00pm</option>
+                      <option value="23:30">11:30pm</option>
+                  </select>
+                  <br>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label for="end" class="col-form-label">End Time:</label>
+                  <select name="end">
+                      <option value="12:00">12:00am</option>
+                      <option value="12:30">12:30am</option>
+                      <option value="1:00">1:00am</option>
+                      <option value="1:30">1:30am</option>
+                      <option value="2:00">2:00am</option>
+                      <option value="2:30">2:30am</option>
+                      <option value="3:00">3:00am</option>
+                      <option value="3:30">3:30am</option>
+                      <option value="4:00">4:00am</option>
+                      <option value="4:30">4:30am</option>
+                      <option value="5:00">5:00am</option>
+                      <option value="5:30">5:30am</option>
+                      <option value="6:00">6:00am</option>
+                      <option value="6:30">6:30am</option>
+                      <option value="7:00">7:00am</option>
+                      <option value="7:30">7:30am</option>
+                      <option value="8:00">8:00am</option>
+                      <option value="8:30">8:30am</option>
+                      <option value="9:00">9:00am</option>
+                      <option value="9:30">9:30am</option>
+                      <option value="10:00">10:00am</option>
+                      <option value="10:30">10:30am</option>
+                      <option value="11:00">11:00am</option>
+                      <option value="11:30">11:30am</option>
+                      <option value="12:00">12:00pm</option>
+                      <option value="12:30">12:30pm</option>
+                      <option value="13:00">1:00pm</option>
+                      <option value="13:30">1:30pm</option>
+                      <option value="14:00">2:00pm</option>
+                      <option value="14:30">2:30pm</option>
+                      <option value="15:00">3:00pm</option>
+                      <option value="15:30">3:30pm</option>
+                      <option value="16:00">4:00pm</option>
+                      <option value="16:30">4:30pm</option>
+                      <option value="17:00">5:00pm</option>
+                      <option value="17:30">5:30pm</option>
+                      <option value="18:00">6:00pm</option>
+                      <option value="18:30">6:30pm</option>
+                      <option value="19:00">7:00pm</option>
+                      <option value="19:30">7:30pm</option>
+                      <option value="20:00">8:00pm</option>
+                      <option value="20:30">8:30pm</option>
+                      <option value="21:00">9:00pm</option>
+                      <option value="21:30">9:30pm</option>
+                      <option value="22:00">10:00pm</option>
+                      <option value="22:30">10:30pm</option>
+                      <option value="23:00">11:00pm</option>
+                      <option value="23:30">11:30pm</option>
+                    </select>
+                    <br>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="submit" style="background-color: #71677C" value="Submit" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
