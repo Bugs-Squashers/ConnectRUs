@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="static/css/create.css">
+
+    <!--Logo to tab-->
+    <link href="/static/images/crulogo.png" rel="icon">
+	<link href="/static/images/crulogo.png" rel="apple-touch-icon">
+
+    <title>Create Group</title>
+  </head>
+  <body>
+  <img src="static/images/crulogo.png" alt="Connect-R-Us Logo" class="logo" height="150px">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <div class="navbar-nav">
+   <a class="nav-item nav-link" href="/">Home</a>
+      <a class="nav-item nav-link" href="/login">Sign In/Sign Up</a>
+      <a class="nav-item nav-link active" href="/create">Create Group</a>
+      <a class="nav-item nav-link" href="/calendar">Timeline</a>
+      <a class="nav-item nav-link" href="/event">Create Event</a>
+      <a class="nav-item nav-link" href="/available">Enter Availability</a>
+      <a class="nav-item nav-link" href="/lookup">Group's Availability</a>
+
+      <!--no working link for task yet, ignore for now-->
+<!--	   <a class="nav-item nav-link" href="../task/task.html">Task</a>-->
+      <!--no working link for team yet, ignore for now-->
+<!--	   <a class="nav-item nav-link" href="../team/team.html">Team</a>-->
+
+      <a class="nav-item nav-link" href="/logout">Signout</a>
+    </div>
+  </div>
+</nav>
+
+  <div class="content">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mr-auto">
+          <h3 class="mb-3">Create a Team!</h3>
+          <head>
+		  <p> Starting a new group project? Invite your members to the team using their email or sending the QR code. Once they join
+		  everyone will be able to:</p>
+		<li>view incomplete tasks,</li>
+		<li>assign tasks,</li>
+		<li> schedule meeting times,</li>
+		<li> view timeline,</li>
+		<li>share contact information,</li>
+		<p>and more! Connect-R-Us wish you the best on your project,
+		  go get that A! </p>
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="box">
+            <h3 class="heading">Create Team</h3>
+            <form class="mb-5" method="post" id="contactForm" name="contactForm">
+              <div class="row">
+
+                <div class="col-md-6 form-group">
+                  <label for="name" class="col-form-label">Name *</label>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Your name">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="name" class="col-form-label">Project Name</label>
+                  <input type="text" class="form-control" name="organization" id="organization" placeholder="Your Project Name">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label for="email" class="col-form-label">Email *</label>
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Member's email address">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label for="message" class="col-form-label">Project Description *</label>
+                  <textarea class="form-control" name="message" id="message" cols="30" rows="7"></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 form-group">
+                <!--
+				  <label for="budget" class="col-form-label">Budget</label>
+                  <select class="custom-select" id="budget" name="budget">
+    <option selected>Choose...</option>
+    <option value="$1000 below">< $1,000</option>
+    <option value="$2,000 - $5,000">$2,000 - $5,000</option>
+    <option value="$5,000 - $15,000">$5,000 - $15,000</option>
+    <option value="$15,000 - $25,000">$15,000 - $25,000</option>
+    <option value="$25,000 >">$25,000 ></option>
+  </select>
+  -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+          <script type="text/javascript">
+              function generateBarCode()
+              {
+                  var nric = $('#text').val();
+                  var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=50x50';
+                  $('#barcode').attr('src', url);
+              }
+          </script>
+      </head>
+      <body>
+	      <label for="message" class="col-form-label">Invite via QR Code!</label>
+          <onblur='generateBarCode();' />
+
+        <img id='barcode'
+              src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=100x100"
+              alt=""
+              title="Invite Members"
+              width="100"
+              height="100" />
+      </body>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="message" class="col-form-label">Due Date</label>
+                  <input type="text" class="form-control" name="date" id="date" placeholder="Example: June 13th">
+
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="submit" style="background-color: #71677C" value="Send Message" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                  <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+
+            <div id="form-message-warning mt-4"></div>
+            <div id="form-message-success">
+              Your message was sent, thank you!
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.validate.min.js"></script>
+    <script src="static/js/main.js"></script>
+
+  </body>
+</html>

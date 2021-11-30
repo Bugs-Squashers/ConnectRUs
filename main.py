@@ -16,7 +16,6 @@ db = client.test
 users = db.users
 trial = db.trial
 
-
 # # For local db
 # client = pymongo.MongoClient("localhost", 27017)
 # db = client.connectrus
@@ -31,6 +30,7 @@ trial = db.trial
 # Home page
 @app.route('/')
 def hello():
+    # session.clear()
     if 'username' in session:
         userData = users.find_one({'username': session['username']})
         msg = "Hello " + userData['name'] + "!"
@@ -160,7 +160,6 @@ def available2():
         # display the event date and time
         eventData = trial.find_one({'_id': ObjectId(session['availableid'])})
 
-
         if request.method == "POST":
             userData = users.find_one({'username': session['username']})
             eventid = session['availableid']
@@ -185,7 +184,7 @@ def available2():
                 available_from = available_from + delta
             return render_template("message.html", value="Added Availability")
         else: #not a post request
-            return render_template("available2.html", date=eventData['date'], start=eventData['start'], end=eventData['end'])
+            return render_template("available2.html", eventName=eventData['eventname'], date=eventData['date'], start=eventData['start'], end=eventData['end'])
     return render_template("message.html", value="Please Login")
 
 
@@ -213,6 +212,15 @@ def time():
     eventname = trial.find_one({'_id': ObjectId(eventid)})['eventname']
     return render_template("time.html", date=str(eventDate['date']), eventname=eventname, data=data)
 
+
+@app.route('/create', methods=['GET'])
+def create():
+    return render_template("create.html")
+
+
+@app.route('/calendar', methods=['GET'])
+def calendar():
+    return render_template("calendar.html")
 
 # commented these out because they need to be fixed/don't have a html yet
 
