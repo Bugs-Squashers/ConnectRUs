@@ -20,6 +20,7 @@ h1 {
 	margin: 0;
 	display: block;
     font-size: 2em;
+	text-align: center;
 }
 
 p {
@@ -111,34 +112,12 @@ input {
 	transition: all 0.6s ease-in-out;
 }
 
-/* navigation
-nav{
-	background-color: #fff;
-	width: 100%;
-	text-align: center;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.navbar-brand {
-    padding: 14px 20px;
-    font-size: 16px;
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
 	text-align: center;
 }
-
-.navbar-nav {
-    width: 100%
-}
-
-.nav-item {
-    padding: 6px 14px;
-    text-align: center;
-	color: black;
-	font-family: Papyrus;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.nav-link {
-    padding-bottom: 10px
-} */
