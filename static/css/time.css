@@ -123,10 +123,10 @@ input {
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 80%; 
+    width: 80%;
 	height: 100%;
     border-color:#333;
-    margin-left:auto; 
+    margin-left:auto;
     margin-right:auto;
     margin-bottom: 3%;
 }
