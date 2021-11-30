@@ -12,12 +12,11 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="/static/css/base.css">
-
-    <link rel="stylesheet" href="/static/css/lookup.css">
-
+    <link rel="stylesheet" href="/static/css/available.css">
+    <link href="../static/images/crulogo.png" rel="icon">
 
     <!-- change title to whatever the page is for-->
-    <title>Title</title>
+    <title>Group's Availability | Connect-R-Us</title>
   </head>
   <body>
    <img src="../static/images/crulogo.png" alt="Connect-R-Us Logo" class="logo" height="150px">
@@ -25,7 +24,7 @@
    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <div class="navbar-nav">
    <a class="nav-item nav-link" href="/">Home </a>
-      <a class="nav-item nav-link active" href="/login">Sign In/Sign Up<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/login">Sign In/Sign Up<span class="sr-only">(current)</span></a>
       <!--no working link for create yet, ignore for now-->
       <a class="nav-item nav-link" href="../create/create.html">Create</a>
       <!--no working link for calendar yet, ignore for now-->
@@ -34,7 +33,7 @@
       <!-- added these 3 to what Sandra had-->
       <a class="nav-item nav-link" href="/event">Create Event</a>
       <a class="nav-item nav-link" href="/available">Enter Availability</a>
-      <a class="nav-item nav-link" href="/lookup">Group's Availability</a>
+      <a class="nav-item nav-link active" href="/lookup">Group's Availability</a>
 
       <!--no working link for task yet, ignore for now-->
 	   <a class="nav-item nav-link" href="../task/task.html">Task</a>
@@ -47,20 +46,17 @@
   </div>
 </nav>
 
-  <div class="content">
+  <div class="container">
+    <div class="form-container>
     <form action="#" method="post">
 
     <h1>Group's Availability</h1>
-    <br>
-
     <label>Input event id to see people's availability</label>
     <input type="text" placeholder="event id" name="eventid" />
-    <br><br>
-
     <button type="submit" value="Submit">Submit</button>
 
    </form>
-
+  </div>
   </div>
 
 
